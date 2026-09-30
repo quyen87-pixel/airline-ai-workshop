@@ -246,6 +246,10 @@ table.opt td.recb{background:var(--teal-soft)!important}
 @media (max-width:860px){.mgroups{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.mgroups{grid-template-columns:1fr}}
 .chips{display:flex; flex-wrap:wrap; gap:6px}
+.mlist2{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px}
+.mlist2 li{display:grid; grid-template-columns:9px minmax(0,1fr); column-gap:8px; font-size:14px; line-height:1.35; color:var(--ink)}
+.mlist2 li::before{content:""; width:9px; height:9px; border-radius:50%; background:var(--dot); margin-top:5px; grid-row:1 / span 2}
+.mlist2 small{grid-column:2; font-size:12px; color:var(--ink2)}
 .chip{font-size:13px; padding:3px 10px}
 .rec{margin-top:16px; border-left:3px solid var(--teal); padding:4px 0 4px 16px}
 .rec b{color:var(--teal-ink)}
@@ -318,7 +322,8 @@ table.opt td.recb{background:var(--teal-soft)!important}
 .ss-h span{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:6px; background:var(--hero); color:#fff; font-size:13px; flex:none; transform:translateY(-2px)}
 .ss-h em{font-style:normal; font-weight:500; font-size:13.5px; color:var(--ink2); opacity:.8}
 .ss-h .ss-r{margin-left:auto; font-family:var(--mono); font-size:14px; font-weight:600; color:var(--teal-ink)}
-.ss-title{font-size:clamp(20px,2.4vw,26px); font-weight:700}
+.ss-title{font-size:clamp(20px,2.4vw,26px); font-weight:700; text-wrap:pretty}
+.ss-sub{font-size:clamp(16px,1.8vw,19px); font-weight:600; line-height:1.4; color:var(--teal-ink); margin-top:4px; text-wrap:pretty}
 .abcd small em{font-style:normal; opacity:.7}
 .sess-grid{margin-top:0!important}
 @media (max-width:600px){.ss-h{flex-wrap:wrap; row-gap:0} .ss-h em{flex-basis:100%; padding-left:34px; margin-top:-2px}}
@@ -455,7 +460,7 @@ tr.brk td{color:var(--ink2); font-style:italic}
 .st.l1{background:var(--teal-soft)} .st.l2{background:var(--teal-soft); box-shadow:inset 0 -3px 0 var(--teal)}
 .st.l3{background:var(--hero); color:var(--hero-ink)} .st.l4{background:var(--hero); color:var(--hero-ink); box-shadow:inset 0 -3px 0 #2EC4BE}
 .st.l3 span,.st.l4 span{color:var(--hero-ink2)}
-.m-tabs{display:flex; gap:6px; align-items:flex-end; padding:10px 14px 0; margin-top:4px}
+.m-tabs{display:flex; gap:6px; align-items:flex-end; padding:10px 14px 0; margin-top:4px; position:sticky; top:var(--navh,92px); z-index:5; background:var(--bg)}
 .m-tabs button{flex:1 1 0; min-width:0; font:inherit; text-align:left; cursor:pointer; border:1px solid var(--line); border-bottom:0; border-radius:12px 12px 0 0; background:var(--bg2); color:var(--ink2); padding:10px 16px; display:flex; flex-direction:column; gap:2px; transition:background .15s, color .15s}
 .m-tabs button:hover{background:var(--card); color:var(--ink)}
 .m-tabs button .w{font-size:12.5px; font-weight:500}
@@ -708,7 +713,7 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
 
   <div class="block" id="p1-method">
     <div class="block-label"><span class="f">1.4</span><h3>Phương pháp đào tạo</h3></div>
-    <div class="sub-h"><span>A</span>Phương pháp luận thiết kế <em>· Design Frameworks</em></div>
+    <div class="sub-h"><span>A</span>Phương pháp luận thiết kế</div>
     <div class="dgrid">
       <div class="dcard"><b>Backward Design <small>Thiết kế ngược</small></b><p>Xuất phát từ kết quả đầu ra cam kết (Buổi 4: use case cá nhân chạy thử trên dữ liệu thật), sau đó suy ngược lại hệ năng lực cần trang bị ở Buổi 3, 2 và 1.</p></div>
       <div class="dcard"><b>CCAF Model <small>Học qua trải nghiệm</small></b><p>Mọi bài thực hành đều xây dựng theo chu trình 4 bước:</p>
@@ -718,25 +723,24 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
           <li><i>Activity</i>Thao tác trên AI</li>
           <li><i>Feedback</i>Phản hồi đúc kết</li>
         </ol></div>
-      <div class="dcard"><b>Scaffolding L1–L3 <small>Phân tầng thử thách</small></b><p>Hệ thống bài tập 3 cấp độ kèm thẻ gợi ý prompt đa tầng, giúp cá nhân hóa lộ trình học, hạn chế tình trạng học viên bị quá tải hoặc bị bỏ lại phía sau.</p></div>
-      <div class="dcard"><b>Cross-Level Synergy <small>Phối hợp đa cấp độ</small></b><p>Tổ chức nhóm thực hành ghép chéo giữa Junior Specialist và Manager, kết hợp nhịp nhàng giữa tư duy chiến lược của quản lý và tốc độ thao tác của chuyên viên.</p></div>
+      <div class="dcard"><b>Phân tầng thử thách L1–L3 <small>Scaffolding</small></b><p>Hệ thống bài tập 3 cấp độ kèm thẻ gợi ý prompt đa tầng, giúp cá nhân hóa lộ trình học, hạn chế tình trạng học viên bị quá tải hoặc bị bỏ lại phía sau.</p></div>
+      <div class="dcard"><b>Phối hợp đa cấp độ</b><p>Tổ chức nhóm thực hành ghép chéo giữa Junior Specialist và Manager, kết hợp nhịp nhàng giữa tư duy chiến lược của quản lý và tốc độ thao tác của chuyên viên.</p></div>
     </div>
 
-    <div class="sub-h"><span>B</span>Bộ phương pháp đào tạo <em>· Training methods</em></div>
+    <div class="sub-h"><span>B</span>Bộ phương pháp đào tạo</div>
     <div class="panel">
       <div class="mgroups">
-        <div><span class="mg pres">Truyền đạt &amp; Thị phạm</span><div class="chips"><span class="chip pres">Presentation</span><span class="chip pres">Live demo</span><span class="chip pres">Live poll</span><span class="chip pres">Micro-quiz</span></div></div>
-        <div><span class="mg grp">Thực hành &amp; Mô phỏng</span><div class="chips"><span class="chip grp">Individual lab</span><span class="chip grp">Group exercise</span><span class="chip grp">Airline case study</span><span class="chip grp">Role-play</span></div></div>
-        <div><span class="mg int">Tương tác &amp; Phản biện</span><div class="chips"><span class="chip int">Open discussion</span><span class="chip int">Peer review</span><span class="chip int">Gallery walk</span><span class="chip int">Use case pitch</span></div></div>
-        <div><span class="mg ind">Cá nhân hóa &amp; Chuyển giao</span><div class="chips"><span class="chip ind">1-on-1 coaching</span><span class="chip ind">Reflection</span><span class="chip ind">Kế hoạch 30–60–90 ngày</span></div></div>
+        <div><span class="mg pres">Truyền đạt &amp; Thị phạm</span><ul class="mlist2"><li class="pres"><span>Thuyết trình</span><small>Presentation</small></li><li class="pres"><span>Trình diễn trực tiếp</span><small>Live demo</small></li><li class="pres"><span>Thăm dò nhanh</span><small>Live poll</small></li><li class="pres"><span>Trắc nghiệm nhanh</span><small>Micro-quiz</small></li></ul></div>
+        <div><span class="mg grp">Thực hành &amp; Mô phỏng</span><ul class="mlist2"><li class="grp"><span>Thực hành cá nhân</span><small>Individual lab</small></li><li class="grp"><span>Thực hành nhóm</span><small>Group exercise</small></li><li class="grp"><span>Nghiên cứu tình huống hàng không</span><small>Airline case study</small></li><li class="grp"><span>Đóng vai</span><small>Role-play</small></li></ul></div>
+        <div><span class="mg int">Tương tác &amp; Phản biện</span><ul class="mlist2"><li class="int"><span>Thảo luận mở</span><small>Open discussion</small></li><li class="int"><span>Đánh giá đồng đẳng</span><small>Peer review</small></li><li class="int"><span>Tham quan chéo sản phẩm</span><small>Gallery walk</small></li><li class="int"><span>Trình bày use case</span><small>Use case pitch</small></li></ul></div>
+        <div><span class="mg ind">Cá nhân hóa &amp; Chuyển giao</span><ul class="mlist2"><li class="ind"><span>Kèm cặp 1-1</span><small>1-on-1 coaching</small></li><li class="ind"><span>Đúc kết cá nhân</span><small>Reflection</small></li><li class="ind"><span>Kế hoạch 30–60–90 ngày</span><small>30–60–90 day plan</small></li></ul></div>
       </div>
     </div>
 
-    <div class="sub-h"><span>C</span>Chuẩn bị &amp; Tổ chức vận hành <em>· Logistics &amp; Pre-workshop</em></div>
+    <div class="sub-h"><span>C</span>Chuẩn bị &amp; Tổ chức vận hành</div>
     <div class="two">
       <div class="panel">
         <h4>Giai đoạn trước workshop: TNA tinh gọn</h4>
-        <p class="muted" style="font-size:13.5px; margin:-4px 0 10px">Pre-training Assessment</p>
         <ul style="font-size:14.5px">
           <li><b>Khảo sát năng lực đầu vào (~10 câu):</b> Đánh giá mức độ sử dụng AI hiện tại, nhận diện các tác vụ lặp gây lãng phí thời gian nhất và xác lập dữ liệu nền (baseline) để đo lường hiệu quả sau khóa học. <button type="button" class="xlink" data-pl="PL1">PL1<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></li>
           <li><b>Phỏng vấn sâu Quản lý (2–3 Managers):</b> Làm rõ KPI trọng tâm của phòng, nhận diện các điểm nghẽn phân tích và các mẫu báo cáo thường dùng nhằm “may đo” bài tập sát với thực tế nhất.</li>
@@ -781,7 +785,7 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
       </div>
 
   <div class="block" id="p1-out">
-    <div class="block-label"><span class="f">1.5</span><h3>Kết quả đầu ra mong đợi</h3><span class="en">Tangible Deliverables</span></div>
+    <div class="block-label"><span class="f">1.5</span><h3>Kết quả đầu ra mong đợi</h3></div>
     <div class="two">
       <div class="panel outp">
         <div class="lvl">Cấp độ cá nhân</div>
@@ -826,7 +830,7 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
 <section class="part" id="p3">
   <div class="part-head">
     <div>
-      <h2 class="ptitle"><span class="pn">Phần 3</span>Hoạt động workshop<em>Workshop activities</em></h2>
+      <h2 class="ptitle"><span class="pn">Phần 3</span>Hoạt động workshop</h2>
     </div>
   </div>
 
@@ -844,7 +848,7 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
 <section class="part" id="p4">
   <div class="part-head">
     <div>
-      <h2 class="ptitle"><span class="pn">Phần 4</span>Use cases ứng dụng AI<em>Use cases</em></h2>
+      <h2 class="ptitle"><span class="pn">Phần 4</span>Use cases ứng dụng AI</h2>
     </div>
   </div>
 
@@ -868,59 +872,59 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
 <section class="part" id="p5">
   <div class="part-head">
     <div>
-      <h2 class="ptitle"><span class="pn">Phần 5</span>Đo lường &amp; Áp dụng<em>Measurement &amp; Adoption</em></h2>
+      <h2 class="ptitle"><span class="pn">Phần 5</span>Đo lường &amp; Áp dụng</h2>
     </div>
   </div>
 
-  <div class="pgroup" style="margin-top:20px"><span class="gl">A</span><h3>Đo lường</h3><em>Measurement</em></div>
+  <div class="pgroup" style="margin-top:20px"><span class="gl">A</span><h3>Đo lường</h3></div>
   <div class="block" style="margin-top:24px">
     <div class="block-label"><span class="f">5.1</span><h3>Khung đo lường</h3><span class="en">Kirkpatrick 4 cấp độ</span></div>
     <div class="kp">
-      <div><div class="ph ph0"><b>Trước khóa học</b><span>Baseline</span></div><div class="steps"><div class="st l0"><b>Dữ liệu nền (Baseline)</b><em>Hiện trạng và kỳ vọng</em><span>Khảo sát năng lực đầu vào và phỏng vấn sâu 2–3 Manager, xác định bài toán ưu tiên và dữ liệu nền để so sánh.</span></div></div></div>
-      <div><div class="ph ph1"><b>Trong khóa học</b><span>During training</span></div><div class="steps s2">
+      <div><div class="ph ph0"><b>Trước khóa học</b></div><div class="steps"><div class="st l0"><b>Dữ liệu nền (Baseline)</b><em>Hiện trạng và kỳ vọng</em><span>Khảo sát năng lực đầu vào và phỏng vấn sâu 2–3 Manager, xác định bài toán ưu tiên và dữ liệu nền để so sánh.</span></div></div></div>
+      <div><div class="ph ph1"><b>Trong khóa học</b></div><div class="steps s2">
         <div class="st l1"><b>Cấp 1 · Phản ứng (Reaction)</b><em>Mức phù hợp với công việc</em><span>Exit poll cuối Buổi 1–3 đánh giá nội dung sát công việc đến đâu và phát hiện sớm vướng mắc của học viên.</span></div>
         <div class="st l2"><b>Cấp 2 · Học tập (Learning)</b><em>Mức đạt mục tiêu học tập</em><span>Tỷ lệ đạt tiêu chuẩn ABCD của từng buổi và mức tự tin khi dùng AI, so sánh trước và sau khóa học.</span></div>
       </div></div>
-      <div><div class="ph ph2"><b>Sau khóa học</b><span>After training</span></div><div class="steps s2">
+      <div><div class="ph ph2"><b>Sau khóa học</b></div><div class="steps s2">
         <div class="st l3"><b>Cấp 3 · Hành vi (Behavior)</b><em>Mức áp dụng vào việc thật</em><span>Tỷ lệ học viên đưa use case vào công việc, duy trì nhật ký kiểm chứng và tuân thủ an toàn dữ liệu.</span></div>
         <div class="st l4"><b>Cấp 4 · Kết quả (Results)</b><em>Tác động đến hiệu quả của phòng</em><span>Thời gian hoàn thành báo cáo, chất lượng theo đánh giá của người nhận và số sự cố rủi ro, so với dữ liệu nền.</span></div>
       </div></div>
     </div>
 
     <div class="pr-wrap">
-      <div class="pr-h">Nguyên tắc đo lường<em>Measurement principles</em></div>
+      <div class="pr-h">Nguyên tắc đo lường</div>
       <ol class="principles">
-        <li><i>1</i><span><b>Đo cả năng lực lẫn sự tự tin <small>Competence &amp; Confidence</small></b>Năng lực chỉ chuyển thành kết quả khi học viên đủ tự tin để tự thực hành. Đo mức tự tin giúp nhận diện sớm rào cản tâm lý khi dùng AI.</span></li>
-        <li><i>2</i><span><b>Đo tác động, không chỉ đo hoạt động <small>Impact over Activity</small></b>Số prompt hay số lần truy cập chỉ phản ánh hoạt động. Trọng tâm là thời gian nghiệp vụ được rút ngắn và chất lượng sản phẩm nghiên cứu.</span></li>
-        <li><i>3</i><span><b>Vòng cải tiến liên tục <small>Continuous Improvement Loop</small></b>Dữ liệu đo lường được dùng để tìm nguyên nhân của điểm nghẽn, điều chỉnh học liệu và hỗ trợ 1-1, rồi đo lại.</span></li>
+        <li><i>1</i><span><b>Đo cả năng lực lẫn sự tự tin</b>Năng lực chỉ chuyển thành kết quả khi học viên đủ tự tin để tự thực hành. Đo mức tự tin giúp nhận diện sớm rào cản tâm lý khi dùng AI.</span></li>
+        <li><i>2</i><span><b>Đo tác động, không chỉ đo hoạt động</b>Số prompt hay số lần truy cập chỉ phản ánh hoạt động. Trọng tâm là thời gian nghiệp vụ được rút ngắn và chất lượng sản phẩm nghiên cứu.</span></li>
+        <li><i>3</i><span><b>Vòng cải tiến liên tục</b>Dữ liệu đo lường được dùng để tìm nguyên nhân của điểm nghẽn, điều chỉnh học liệu và hỗ trợ 1-1, rồi đo lại.</span></li>
       </ol>
     </div>
 </div>
   </div>
 
   <div class="block">
-    <div class="block-label"><span class="f">5.2</span><h3>Chỉ số đo lường</h3><span class="en">Metrics</span></div>
+    <div class="block-label"><span class="f">5.2</span><h3>Chỉ số đo lường</h3></div>
     <div class="m-tabs" role="tablist" id="p5-tabs">
-      <button type="button" role="tab" id="tab-during" aria-selected="true" aria-controls="m-during"><span class="w">Cấp 1–2 · Phản ứng, Học tập</span><span class="t">Trong khóa học<em>During training</em></span></button>
-      <button type="button" role="tab" id="tab-after" aria-selected="false" aria-controls="m-after"><span class="w">Cấp 3–4 · Hành vi, Kết quả</span><span class="t">Sau khóa học<em>After training</em></span></button>
+      <button type="button" role="tab" id="tab-during" aria-selected="true" aria-controls="m-during"><span class="w">Cấp 1–2 · Phản ứng, Học tập</span><span class="t">Trong khóa học</span></button>
+      <button type="button" role="tab" id="tab-after" aria-selected="false" aria-controls="m-after"><span class="w">Cấp 3–4 · Hành vi, Kết quả</span><span class="t">Sau khóa học</span></button>
     </div>
 
     <div class="m-panel" id="m-during" role="tabpanel" aria-labelledby="tab-during">
       <div class="tbl-wrap"><table>
         <thead><tr><th style="width:20%">Chỉ số</th><th style="width:27%">Cách thu thập</th><th>Thời điểm</th><th>Phụ trách</th><th style="width:25%">Chỉ tiêu</th></tr></thead>
         <tbody>
-          <tr><td class="k" style="white-space:normal">Thay đổi nhận thức về độ tin cậy của AI<small class="en2">Mindset shift</small></td><td>Poll ẩn danh trước và sau khi tự kiểm chứng (TT1) <button type="button" class="xlink" data-pl="PL2">PL2<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></td><td>Buổi 1</td><td>Lead Coach</td><td>Mức tin tưởng trung bình ở poll lần 2 thấp hơn lần 1</td></tr>
-          <tr><td class="k" style="white-space:normal">Năng lực nhận diện lỗi AI<small class="en2">Error detection</small></td><td>Điểm nhóm bài “Fact or Fake” (NH1)</td><td>Buổi 1</td><td>Lead Coach</td><td>≥ 80% nhóm phân loại đúng ≥ 4/5 output và chỉ đúng loại lỗi</td></tr>
-          <tr><td class="k" style="white-space:normal">Chất lượng prompt và output<small class="en2">Prompt quality</small></td><td>Phiếu chấm chéo theo checklist chất lượng 5 tiêu chí (TT2) <button type="button" class="xlink" data-pl="PL3">PL3<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></td><td>Buổi 2</td><td>Lead Coach, trainer</td><td>≥ 80% học viên có output bản 2 đạt ≥ 4/5 tiêu chí, trong đó tiêu chí An toàn dữ liệu bắt buộc đạt</td></tr>
+          <tr><td class="k" style="white-space:normal">Thay đổi nhận thức về độ tin cậy của AI</td><td>Poll ẩn danh trước và sau khi tự kiểm chứng (TT1) <button type="button" class="xlink" data-pl="PL2">PL2<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></td><td>Buổi 1</td><td>Lead Coach</td><td>Mức tin tưởng trung bình ở poll lần 2 thấp hơn lần 1</td></tr>
+          <tr><td class="k" style="white-space:normal">Năng lực nhận diện lỗi AI</td><td>Điểm nhóm bài “Fact or Fake” (NH1)</td><td>Buổi 1</td><td>Lead Coach</td><td>≥ 80% nhóm phân loại đúng ≥ 4/5 output và chỉ đúng loại lỗi</td></tr>
+          <tr><td class="k" style="white-space:normal">Chất lượng prompt và output</td><td>Phiếu chấm chéo theo checklist chất lượng 5 tiêu chí (TT2) <button type="button" class="xlink" data-pl="PL3">PL3<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></td><td>Buổi 2</td><td>Lead Coach, trainer</td><td>≥ 80% học viên có output bản 2 đạt ≥ 4/5 tiêu chí, trong đó tiêu chí An toàn dữ liệu bắt buộc đạt</td></tr>
           <tr><td class="k" style="white-space:normal">Mức phù hợp của bài tập phân tầng<small class="en2">Scaffolding fit</small></td><td>Phân bố cấp độ L1–L3 và số thẻ gợi ý đã dùng (CN1)</td><td>Buổi 2</td><td>Trainer</td><td>Không đặt chỉ tiêu; dùng để phát hiện học viên quá tải và hỗ trợ 1-1 kịp thời</td></tr>
-          <tr><td class="k" style="white-space:normal">Khả năng áp dụng vào quy trình<small class="en2">Workflow application</small></td><td>Điểm rubric role-play (TT4) <button type="button" class="xlink" data-pl="PL5">PL5<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button>; nhật ký kiểm chứng (NH3)</td><td>Buổi 3</td><td>Lead Coach, người đóng vai Giám đốc thương mại</td><td>Mọi nhóm đạt ≥ 3/4 ở tiêu chí Minh bạch nguồn dữ liệu</td></tr>
-          <tr><td class="k" style="white-space:normal">Mức sẵn sàng triển khai use case<small class="en2">Readiness rate</small></td><td>Canvas có bằng chứng chạy thử (CN2) <button type="button" class="xlink" data-pl="PL6">PL6<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button>; đánh giá của nhóm (TT5)</td><td>Buổi 4</td><td>Lead Coach</td><td>≥ 90% học viên hoàn thành canvas có bằng chứng chạy thử; ≥ 80% use case được nhóm đánh giá “có thể triển khai ngay”</td></tr>
+          <tr><td class="k" style="white-space:normal">Khả năng áp dụng vào quy trình</td><td>Điểm rubric role-play (TT4) <button type="button" class="xlink" data-pl="PL5">PL5<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button>; nhật ký kiểm chứng (NH3)</td><td>Buổi 3</td><td>Lead Coach, người đóng vai Giám đốc thương mại</td><td>Mọi nhóm đạt ≥ 3/4 ở tiêu chí Minh bạch nguồn dữ liệu</td></tr>
+          <tr><td class="k" style="white-space:normal">Mức sẵn sàng triển khai use case</td><td>Canvas có bằng chứng chạy thử (CN2) <button type="button" class="xlink" data-pl="PL6">PL6<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button>; đánh giá của nhóm (TT5)</td><td>Buổi 4</td><td>Lead Coach</td><td>≥ 90% học viên hoàn thành canvas có bằng chứng chạy thử; ≥ 80% use case được nhóm đánh giá “có thể triển khai ngay”</td></tr>
           <tr><td class="k" style="white-space:normal">Bài đánh giá cuối khóa<small class="en2">Scenario assessment</small></td><td>6–8 câu tình huống: an toàn dữ liệu, kiểm chứng, sửa prompt, phân loại Automate / Augment / Leave alone <button type="button" class="xlink" data-pl="PL7">PL7<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></td><td>Cuối Buổi 4</td><td>Lead Coach</td><td>≥ 80% học viên đạt ngưỡng qua (ví dụ 6/8 câu)</td></tr>
-          <tr><td class="k" style="white-space:normal">Mức tự tin khi dùng AI cho công việc<small class="en2">Confidence index</small></td><td>Cùng bộ câu tự đánh giá thang 1–5 ở khảo sát đầu vào và cuối khóa <button type="button" class="xlink" data-pl="PL1">PL1<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></td><td>Trước khóa học, cuối Buổi 4</td><td>Lead Coach</td><td>Điểm trung bình tăng; theo dõi riêng nhóm có điểm đầu vào thấp</td></tr>
+          <tr><td class="k" style="white-space:normal">Mức tự tin khi dùng AI cho công việc</td><td>Cùng bộ câu tự đánh giá thang 1–5 ở khảo sát đầu vào và cuối khóa <button type="button" class="xlink" data-pl="PL1">PL1<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></td><td>Trước khóa học, cuối Buổi 4</td><td>Lead Coach</td><td>Điểm trung bình tăng; theo dõi riêng nhóm có điểm đầu vào thấp</td></tr>
           <tr><td class="k" style="white-space:normal">Mức sát công việc<small class="en2">Reaction</small></td><td>Exit poll 2 câu: nội dung dùng được đến đâu, còn vướng gì nhất <button type="button" class="xlink" data-pl="PL2">PL2<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></td><td><span style="white-space:nowrap">Cuối Buổi 1–3</span></td><td>Trainer</td><td>Không đặt chỉ tiêu; dùng để điều chỉnh buổi sau</td></tr>
         </tbody>
       </table></div>
-      <h4>Điều chỉnh ngay theo dữ liệu trong khóa học <em class="h4en">Adaptation loop</em></h4>
+      <h4>Điều chỉnh ngay theo dữ liệu trong khóa học</h4>
       <div class="fix adapt">
         <div><b class="fx-h">NH1 thấp</b><p><span class="fx-l">Tín hiệu:</span> Dưới 80% nhóm phân loại đúng ≥ 4/5 output ở bài “Fact or Fake” (Buổi 1).</p><p><span class="fx-l">Điều chỉnh:</span> Tăng thời lượng phần kỹ thuật kiểm chứng ở Buổi 2 và thêm một bài đối chiếu dữ liệu gốc để củng cố phản xạ kiểm tra nguồn.</p></div>
         <div><b class="fx-h">CN1 cần nhiều trợ giúp</b><p><span class="fx-l">Tín hiệu:</span> Nhiều học viên phải dùng đến thẻ gợi ý lớp 3 ở bài thực hành phân tầng (Buổi 2).</p><p><span class="fx-l">Điều chỉnh:</span> Giảm độ phức tạp của research sprint ở Buổi 3; trainer kèm sát các học viên này và xếp họ vào nhóm có thành viên vững hơn.</p></div>
@@ -935,10 +939,10 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
         <thead><tr><th style="width:22%">Chỉ số</th><th style="width:26%">Cách thu thập</th><th>Thời điểm</th><th>Phụ trách</th><th style="width:26%">Chỉ tiêu</th></tr></thead>
         <tbody>
           <tr><td class="k" style="white-space:normal">Tỷ lệ đưa use case vào công việc thật<small class="en2">Adoption rate</small></td><td>Học viên báo cáo theo kế hoạch 30–60–90; Manager xác nhận trong buổi 1-1</td><td>Ngày 30, 60, 90</td><td>Manager, AI Champion</td><td>≥ 70% học viên có ít nhất 1 use case đang dùng trong công việc thật ở ngày 30; ≥ 85% ở ngày 90</td></tr>
-          <tr><td class="k" style="white-space:normal">Độ phủ use case theo 3 cấp độ<small class="en2">Portfolio balance</small></td><td>Danh sách use case của phòng (portfolio tracker), cập nhật hằng tháng</td><td>Ngày 30, 60, 90</td><td>AI Champion</td><td>Có use case đang áp dụng ở cả Tự động hóa và Nâng cấp; ≥ 1 đề xuất pilot Chuyển đổi được xem xét ở ngày 60</td></tr>
+          <tr><td class="k" style="white-space:normal">Độ phủ use case theo 3 cấp độ</td><td>Danh sách use case của phòng (portfolio tracker), cập nhật hằng tháng</td><td>Ngày 30, 60, 90</td><td>AI Champion</td><td>Có use case đang áp dụng ở cả Tự động hóa và Nâng cấp; ≥ 1 đề xuất pilot Chuyển đổi được xem xét ở ngày 60</td></tr>
           <tr><td class="k" style="white-space:normal">Tuân thủ kiểm chứng và an toàn dữ liệu<small class="en2">Compliance &amp; traceability</small></td><td>Kiểm tra ngẫu nhiên sản phẩm có dùng AI: nhật ký kiểm chứng và việc ẩn danh dữ liệu hành khách</td><td>Hằng tháng</td><td>Senior Specialist hoặc AI Champion</td><td>Mọi sản phẩm được kiểm tra có nhật ký kiểm chứng; không có trường hợp dữ liệu hành khách chưa ẩn danh bị đưa lên AI</td></tr>
-          <tr><td class="k" style="white-space:normal">Mức độ dùng AI trong công việc<small class="en2">Utilization</small></td><td>Pulse survey; dữ liệu sử dụng từ công cụ AI doanh nghiệp nếu có</td><td>Ngày 30, 90</td><td>L&amp;D, Lead Coach</td><td>Chỉ số tham khảo; không dùng riêng để đánh giá hiệu quả và không dùng để đánh giá hiệu suất cá nhân</td></tr>
-          <tr><td class="k" style="white-space:normal">Đóng góp và dùng lại thư viện prompt<small class="en2">Asset sharing &amp; reuse</small></td><td>Số prompt mẫu được thêm mới và số lần đồng nghiệp dùng lại</td><td>Hằng tháng</td><td>AI Champion</td><td>Thư viện được cập nhật hằng tháng bằng các prompt đã được kiểm chứng khi dùng thật</td></tr>
+          <tr><td class="k" style="white-space:normal">Mức độ dùng AI trong công việc</td><td>Pulse survey; dữ liệu sử dụng từ công cụ AI doanh nghiệp nếu có</td><td>Ngày 30, 90</td><td>L&amp;D, Lead Coach</td><td>Chỉ số tham khảo; không dùng riêng để đánh giá hiệu quả và không dùng để đánh giá hiệu suất cá nhân</td></tr>
+          <tr><td class="k" style="white-space:normal">Đóng góp và dùng lại thư viện prompt</td><td>Số prompt mẫu được thêm mới và số lần đồng nghiệp dùng lại</td><td>Hằng tháng</td><td>AI Champion</td><td>Thư viện được cập nhật hằng tháng bằng các prompt đã được kiểm chứng khi dùng thật</td></tr>
         </tbody>
       </table></div>
 
@@ -947,11 +951,11 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
       <div class="tbl-wrap"><table>
         <thead><tr><th style="width:18%">Mục tiêu</th><th style="width:42%">Chỉ số</th><th>Cách thu thập</th><th style="white-space:nowrap">Thời điểm</th></tr></thead>
         <tbody>
-          <tr><td class="k" style="white-space:normal">Hiệu quả<small class="en2">Operational efficiency</small></td><td><ul class="mlist"><li><b>Thời gian làm tác vụ chuẩn</b> <i>(turnaround time)</i>: bản tin tuần, tóm tắt review, market brief, so với dữ liệu nền</li><li><b>Thời gian đáp ứng</b> <i>(lead time)</i>: từ lúc nhận yêu cầu đến lúc giao sản phẩm nghiên cứu</li></ul></td><td>Học viên ghi thời gian trước/sau; nhật ký yêu cầu của phòng</td><td>Ngày 30, 90</td></tr>
-          <tr><td class="k" style="white-space:normal">Chất lượng<small class="en2">Output quality</small></td><td><ul class="mlist"><li><b>Đánh giá của người nhận báo cáo</b>: Commercial, Marketing, Network Planning đánh giá mức hữu ích và độ tin cậy</li><li><b>Số lần phải đính chính</b>: số liệu hoặc nhận định sau khi báo cáo đã gửi</li></ul></td><td>Khảo sát ngắn người nhận; nhật ký đính chính</td><td>Ngày 90</td></tr>
-          <tr><td class="k" style="white-space:normal">Kiểm soát rủi ro<small class="en2">Risk &amp; compliance</small></td><td><ul class="mlist"><li><b>Sự cố an toàn dữ liệu</b>: kể cả dùng công cụ AI chưa được phê duyệt (Shadow AI)</li><li><b>Lỗi do AI</b> <i>(hallucination)</i>: bị phát hiện sau khi báo cáo đã gửi</li></ul></td><td>Nhật ký sự cố; kiểm tra mẫu ngẫu nhiên</td><td>Hằng tháng</td></tr>
-          <tr><td class="k" style="white-space:normal">Năng lực phục vụ<small class="en2">Capacity</small></td><td><ul class="mlist"><li><b>Số yêu cầu nghiên cứu hoàn thành</b>: mỗi tháng</li><li><b>Thời gian phản hồi ban đầu</b>: từ lúc nhận yêu cầu đến lúc xác nhận phạm vi và hướng tiếp cận</li></ul></td><td>Nhật ký yêu cầu; bảng theo dõi tiến độ</td><td>Ngày 90</td></tr>
-          <tr><td class="k" style="white-space:normal">Trải nghiệm nhân viên<small class="en2">Employee sentiment</small></td><td><ul class="mlist"><li><b>Mức tự tin</b>: khi dùng AI cho công việc</li><li><b>Cảm nhận về mức giảm</b>: khối lượng việc thủ công, lặp lại</li></ul></td><td>Pulse survey, cùng thang với khảo sát đầu vào</td><td>Ngày 30, 90</td></tr>
+          <tr><td class="k" style="white-space:normal">Hiệu quả</td><td><ul class="mlist"><li><b>Thời gian làm tác vụ chuẩn</b> <i>(turnaround time)</i>: bản tin tuần, tóm tắt review, market brief, so với dữ liệu nền</li><li><b>Thời gian đáp ứng</b> <i>(lead time)</i>: từ lúc nhận yêu cầu đến lúc giao sản phẩm nghiên cứu</li></ul></td><td>Học viên ghi thời gian trước/sau; nhật ký yêu cầu của phòng</td><td>Ngày 30, 90</td></tr>
+          <tr><td class="k" style="white-space:normal">Chất lượng</td><td><ul class="mlist"><li><b>Đánh giá của người nhận báo cáo</b>: Commercial, Marketing, Network Planning đánh giá mức hữu ích và độ tin cậy</li><li><b>Số lần phải đính chính</b>: số liệu hoặc nhận định sau khi báo cáo đã gửi</li></ul></td><td>Khảo sát ngắn người nhận; nhật ký đính chính</td><td>Ngày 90</td></tr>
+          <tr><td class="k" style="white-space:normal">Kiểm soát rủi ro</td><td><ul class="mlist"><li><b>Sự cố an toàn dữ liệu</b>: kể cả dùng công cụ AI chưa được phê duyệt (Shadow AI)</li><li><b>Lỗi do AI</b> <i>(hallucination)</i>: bị phát hiện sau khi báo cáo đã gửi</li></ul></td><td>Nhật ký sự cố; kiểm tra mẫu ngẫu nhiên</td><td>Hằng tháng</td></tr>
+          <tr><td class="k" style="white-space:normal">Năng lực phục vụ</td><td><ul class="mlist"><li><b>Số yêu cầu nghiên cứu hoàn thành</b>: mỗi tháng</li><li><b>Thời gian phản hồi ban đầu</b>: từ lúc nhận yêu cầu đến lúc xác nhận phạm vi và hướng tiếp cận</li></ul></td><td>Nhật ký yêu cầu; bảng theo dõi tiến độ</td><td>Ngày 90</td></tr>
+          <tr><td class="k" style="white-space:normal">Trải nghiệm nhân viên</td><td><ul class="mlist"><li><b>Mức tự tin</b>: khi dùng AI cho công việc</li><li><b>Cảm nhận về mức giảm</b>: khối lượng việc thủ công, lặp lại</li></ul></td><td>Pulse survey, cùng thang với khảo sát đầu vào</td><td>Ngày 30, 90</td></tr>
         </tbody>
       </table></div>
       <div class="attr">
@@ -964,9 +968,9 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
     </div>
   </div>
 
-  <div class="pgroup"><span class="gl">B</span><h3>Áp dụng</h3><em>Adoption</em></div>
+  <div class="pgroup"><span class="gl">B</span><h3>Áp dụng</h3></div>
   <div class="block" style="margin-top:24px">
-    <div class="block-label"><span class="f">5.3</span><h3>Kế hoạch áp dụng 90 ngày</h3><span class="en">Adoption plan</span></div>
+    <div class="block-label"><span class="f">5.3</span><h3>Kế hoạch áp dụng 90 ngày</h3></div>
     <div class="lanes2">
       <div><span class="tn t">T</span><b>Luồng đào tạo và kèm cặp</b><span>Coaching clinic, office hours hằng tuần, hỗ trợ 1-1</span></div>
       <div><span class="tn">NT</span><b>Luồng quản trị và duy trì</b><span>Manager 1-1, mạng lưới AI Champion, rà soát danh mục use case</span></div>
@@ -984,9 +988,9 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
   </div>
 
   <div class="block">
-    <div class="block-label"><span class="f">5.4</span><h3>Điều kiện nền để áp dụng bền vững</h3><span class="en">Enablers</span></div>
+    <div class="block-label"><span class="f">5.4</span><h3>Điều kiện nền để áp dụng bền vững</h3></div>
     <div class="dgrid">
-      <div class="dcard"><b>Chính sách và công cụ sẵn sàng <small>Policy &amp; tooling</small></b><p>Chính sách sử dụng AI (AUP) được ban hành rõ ràng; mọi người có tài khoản công cụ AI doanh nghiệp đã được phê duyệt.</p></div>
+      <div class="dcard"><b>Chính sách và công cụ sẵn sàng</b><p>Chính sách sử dụng AI (AUP) được ban hành rõ ràng; mọi người có tài khoản công cụ AI doanh nghiệp đã được phê duyệt.</p></div>
       <div class="dcard"><b>Manager đồng hành <small>Role-modeling</small></b><p>Manager làm gương dùng AI, rà tiến độ use case trong buổi 1-1 và chỉ duyệt báo cáo có dùng AI khi có nhật ký kiểm chứng.</p></div>
       <div class="dcard"><b>Thời gian thử nghiệm được giữ riêng <small>Protected time</small></b><p>2–3 giờ mỗi tuần trong tháng đầu để học viên chạy thử use case, không bị việc sự vụ lấn át.</p></div>
       <div class="dcard"><b>An toàn tâm lý và ghi nhận <small>Psychological safety</small></b><p>Khuyến khích thử nghiệm trong phạm vi an toàn; ghi nhận việc học và thử nghiệm, không chỉ kết quả tiết kiệm chi phí.</p></div>
@@ -994,7 +998,7 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
   </div>
 
   <div class="block">
-    <div class="block-label"><span class="f">5.5</span><h3>Khi kết quả chưa đạt</h3><span class="en">Diagnostic &amp; remediation · Đào tạo (T) hay phi đào tạo (NT)</span></div>
+    <div class="block-label"><span class="f">5.5</span><h3>Khi kết quả chưa đạt</h3><span class="en">Đào tạo (T) hay phi đào tạo (NT)</span></div>
     <div class="tbl-wrap"><table class="rt">
       <thead><tr><th style="width:22%">Dấu hiệu</th><th style="width:8%">Loại</th><th style="width:30%">Nguyên nhân thường gặp</th><th>Cách xử lý</th></tr></thead>
       <tbody>
@@ -1010,7 +1014,7 @@ footer{margin-top:72px; background:var(--bg2); border-top:1px solid var(--line);
 <section class="part" id="pl">
   <div class="part-head">
     <div>
-      <h2 class="ptitle"><span class="pn">Phụ lục</span>Công cụ triển khai<em>Appendix</em></h2>
+      <h2 class="ptitle"><span class="pn">Phụ lục</span>Công cụ triển khai</h2>
     </div>
   </div>
   <div class="block" style="margin-top:20px">
@@ -1252,69 +1256,69 @@ Tiêu chí: chỉ dùng dữ liệu được cung cấp; mỗi nhận định k�
 <script>
 (function(){
 const CAT = {pres:'Truyền đạt & Thị phạm', grp:'Thực hành & Mô phỏng', int:'Tương tác & Phản biện', ind:'Cá nhân hóa & Chuyển giao', brk:'Nghỉ giải lao'};
-const GRP = {'Presentation':'pres','Live demo':'pres','Live poll':'pres','Micro-quiz':'pres','Individual lab':'grp','Group exercise':'grp','Airline case study':'grp','Role-play':'grp','Open discussion':'int','Peer review':'int','Gallery walk':'int','Use case pitch':'int','1-on-1 coaching':'ind','Reflection':'ind','Kế hoạch 30–60–90 ngày':'ind'};
+const GRP = {'Thuyết trình':'pres','Trình diễn trực tiếp':'pres','Thăm dò nhanh':'pres','Trắc nghiệm nhanh':'pres','Thực hành cá nhân':'grp','Thực hành nhóm':'grp','Nghiên cứu tình huống hàng không':'grp','Đóng vai':'grp','Thảo luận mở':'int','Đánh giá đồng đẳng':'int','Tham quan chéo sản phẩm':'int','Trình bày use case':'int','Kèm cặp 1-1':'ind','Đúc kết cá nhân':'ind','Kế hoạch 30–60–90 ngày':'ind'};
 const gc = x => GRP[x[1]] || 'brk';
 
 const SESS = [
  {code:'B1', when:'Ngày 1 · Sáng', short:'Tư duy & Sử dụng AI an toàn',
-  title:'Tư duy & Sử dụng AI an toàn – “Fluent ≠ Accurate”', goal:'Mục tiêu 1 · Hiểu đúng về AI',
+  title:'Tư duy & Sử dụng AI an toàn', tsub:'“Fluent ≠ Accurate”', goal:'Mục tiêu 1 · Hiểu đúng về AI',
   abcd:{A:'Mỗi nhóm học viên', B:'Nhận diện ≥ 3 lỗi điển hình (bịa số liệu, nguồn ảo, thiên lệch)', C:'Bộ 5 dữ liệu mẫu ngành hàng không do AI tạo ra', D:'Phân loại đúng Fact/Fake ≥ 4/5 trường hợp kèm định danh loại lỗi'},
   lo:'Sau Buổi 1, mỗi nhóm {A} có khả năng nhận diện ít nhất 3 loại lỗi phổ biến của AI {B} khi rà soát 5 kết quả mẫu ngành hàng không {C}, với độ chính xác đạt tối thiểu 4/5 trường hợp {D}.',
   subT:'Kiến thức nền tảng', sub:[['Cơ chế','Nắm cách AI sinh văn bản và lý do mô hình có thể sai một cách tự tin (“Fluent ≠ Accurate”).'],['Ranh giới','Phân biệt tự động hóa theo quy tắc, AI truyền thống và GenAI qua bài toán hàng không.'],['An toàn','Nắm quy tắc bảo mật dữ liệu và danh mục công cụ được phép dùng trong doanh nghiệp.']],
   rows:[
-   [20, "TT1", ["Thử thách khởi động (Cognitive Challenge)", "Học viên tự hỏi AI “Quy mô thị trường tuyến Hà Nội – Bangkok năm nay là bao nhiêu? Kèm nguồn”, rồi tự kiểm chứng câu trả lời để nhận ra bẫy thông tin. [[PL2]]"], [["x", "Individual lab"], ["x", "Live poll"]]],
-   [20, "TT1", ["Debrief phản biện", "Mổ xẻ hiện tượng “Fluent ≠ Accurate”: vì sao AI trả lời tự tin, trôi chảy nhưng bản chất vẫn sai lệch."], [["x", "Open discussion"]]],
-   [35, "", ["Bản chất công nghệ LLM", "Cơ chế dự đoán token tiếp theo theo xác suất, giới hạn của context window và căn nguyên hiện tượng ảo giác (hallucination)."], [["x", "Presentation"], ["x", "Live demo"]]],
-   [20, "", ["Phân định công nghệ trong ngành hàng không", "Ranh giới giữa tự động hóa theo quy tắc (rule-based), AI phân tích truyền thống và GenAI."], [["x", "Presentation"], ["x", "Micro-quiz"]]],
+   [20, "TT1", ["Thử thách khởi động (Cognitive Challenge)", "Học viên tự hỏi AI “Quy mô thị trường tuyến Hà Nội – Bangkok năm nay là bao nhiêu? Kèm nguồn”, rồi tự kiểm chứng câu trả lời để nhận ra bẫy thông tin. [[PL2]]"], [["x", "Thực hành cá nhân"], ["x", "Thăm dò nhanh"]]],
+   [20, "TT1", ["Debrief phản biện", "Mổ xẻ hiện tượng “Fluent ≠ Accurate”: vì sao AI trả lời tự tin, trôi chảy nhưng bản chất vẫn sai lệch."], [["x", "Thảo luận mở"]]],
+   [35, "", ["Bản chất công nghệ LLM", "Cơ chế dự đoán token tiếp theo theo xác suất, giới hạn của context window và căn nguyên hiện tượng ảo giác (hallucination)."], [["x", "Thuyết trình"], ["x", "Trình diễn trực tiếp"]]],
+   [20, "", ["Phân định công nghệ trong ngành hàng không", "Ranh giới giữa tự động hóa theo quy tắc (rule-based), AI phân tích truyền thống và GenAI."], [["x", "Thuyết trình"], ["x", "Trắc nghiệm nhanh"]]],
    [15, "", "Nghỉ giải lao", [["brk", "–"]]],
-   [40, "NH1", ["Thực hành nhóm “Fact or Fake”", "Nhận diện và phân loại lỗi trên bộ 5 output mẫu về thị trường hàng không."], [["x", "Group exercise"]]],
-   [45, "", ["Quản trị rủi ro & Chính sách AI doanh nghiệp", "Bảo mật thông tin hành khách (PII), rủi ro Shadow AI và tuân thủ Acceptable Use Policy."], [["x", "Airline case study"], ["x", "Open discussion"]]],
-   [15, "", ["Đóng gói cam kết & Đánh giá", "Mỗi học viên thiết lập “5 nguyên tắc sử dụng AI an toàn” cho vị trí của mình; thực hiện exit poll cuối buổi. [[PL2]]"], [["x", "Reflection"], ["x", "Live poll"]]]
+   [40, "NH1", ["Thực hành nhóm “Fact or Fake”", "Nhận diện và phân loại lỗi trên bộ 5 output mẫu về thị trường hàng không."], [["x", "Thực hành nhóm"]]],
+   [45, "", ["Quản trị rủi ro & Chính sách AI doanh nghiệp", "Bảo mật thông tin hành khách (PII), rủi ro Shadow AI và tuân thủ Acceptable Use Policy."], [["x", "Nghiên cứu tình huống hàng không"], ["x", "Thảo luận mở"]]],
+   [15, "", ["Đóng gói cam kết & Đánh giá", "Mỗi học viên thiết lập “5 nguyên tắc sử dụng AI an toàn” cho vị trí của mình; thực hiện exit poll cuối buổi. [[PL2]]"], [["x", "Đúc kết cá nhân"], ["x", "Thăm dò nhanh"]]]
   ],
   out:[["Kết quả thực hành", "Kết quả bài Fact or Fake của từng nhóm, đối chiếu chuẩn 4/5 trường hợp."], ["Bản cam kết cá nhân", "Bộ “5 nguyên tắc sử dụng AI an toàn” được cá nhân hóa theo từng học viên."], ["Dữ liệu đánh giá", "Kết quả exit poll: mức sát công việc và điểm còn vướng."]]},
  {code:'B2', when:'Ngày 1 · Chiều', short:'Prompting & Kiểm chứng',
-  title:'Prompting & Kiểm chứng – Output Validation', goal:'Mục tiêu 2 · Thành thạo kỹ năng căn bản',
+  title:'Prompting & Kiểm chứng', tsub:'Khung prompt 6 thành phần', goal:'Mục tiêu 2 · Thành thạo kỹ năng căn bản',
   abcd:{A:'Mỗi học viên', B:'Thiết lập prompt có cấu trúc chuẩn để xử lý và phân tích dữ liệu nghiên cứu', C:'Bài thực hành phân tầng L1–L3 trên tài liệu và dữ liệu mẫu ngành hàng không', D:'Output đạt ≥ 4/5 tiêu chí trong checklist chất lượng'},
   lo:'Sau Buổi 2, mỗi học viên {A} xây dựng được prompt có cấu trúc để phân tích dữ liệu nghiên cứu thị trường {B} trên bài tập phân tầng L1–L3 {C}, với output đạt tối thiểu 4/5 tiêu chí trong checklist chất lượng {D}.',
   subT:'Kỹ năng thao tác nghiệp vụ', sub:[['Chuẩn hóa cấu trúc prompt','Áp dụng khung prompt 6 thành phần vào các tác vụ nghiên cứu thị trường.'],['Kiểm chứng chặng cuối','Thực hiện 4 kỹ thuật kiểm chứng: truy nguồn, hỏi vặn lại, đối chiếu dữ liệu gốc và chia nhỏ tài liệu dài (chunking).'],['Đánh giá đồng đẳng (Peer review)','Dùng checklist chất lượng để thẩm định và phản biện chéo output của đồng nghiệp.']],
   rows:[
-   [15, "", ["Thử thách tối ưu prompt (Prompt Refactoring)", "Tái cấu trúc một prompt kém chất lượng để trực tiếp đối chiếu khác biệt về độ chính xác của output."], [["x", "Individual lab"]]],
-   [30, "", ["Chuẩn hóa khung prompt 6 thành phần trong Market Research", "Giới thiệu khung Vai trò (Role) – Bối cảnh (Context) – Nhiệm vụ (Task) – Dữ liệu (Data) – Định dạng (Format) – Tiêu chí kiểm tra (Criteria); thị phạm trực tiếp trên tình huống phân tích thị trường. [[PL3]]"], [["x", "Presentation"], ["x", "Live demo"]]],
-   [50, "CN1", ["Thực hành phân tầng năng lực (Scaffolding L1–L3)", "Học viên tự chọn cấp độ:", [["L1 (Nền tảng)", "Trích xuất số liệu trọng yếu từ báo cáo ngành hàng không (UC04)."], ["L2 (Trung cấp)", "Phân tích sắc thái và gom cụm chủ đề từ 200 phản hồi khách hàng – VOC (UC06)."], ["L3 (Mở rộng)", "Xây dựng market brief đối chiếu năng lực cạnh tranh (UC05)."]]], [["x", "Individual lab"]]],
+   [15, "", ["Thử thách tối ưu prompt (Prompt Refactoring)", "Tái cấu trúc một prompt kém chất lượng để trực tiếp đối chiếu khác biệt về độ chính xác của output."], [["x", "Thực hành cá nhân"]]],
+   [30, "", ["Chuẩn hóa khung prompt 6 thành phần trong Market Research", "Giới thiệu khung Vai trò (Role) – Bối cảnh (Context) – Nhiệm vụ (Task) – Dữ liệu (Data) – Định dạng (Format) – Tiêu chí kiểm tra (Criteria); thị phạm trực tiếp trên tình huống phân tích thị trường. [[PL3]]"], [["x", "Thuyết trình"], ["x", "Trình diễn trực tiếp"]]],
+   [50, "CN1", ["Thực hành phân tầng năng lực (Scaffolding L1–L3)", "Học viên tự chọn cấp độ:", [["L1 (Nền tảng)", "Trích xuất số liệu trọng yếu từ báo cáo ngành hàng không (UC04)."], ["L2 (Trung cấp)", "Phân tích sắc thái và gom cụm chủ đề từ 200 phản hồi khách hàng – VOC (UC06)."], ["L3 (Mở rộng)", "Xây dựng market brief đối chiếu năng lực cạnh tranh (UC05)."]]], [["x", "Thực hành cá nhân"]]],
    [15, "", "Nghỉ giải lao", [["brk", "–"]]],
-   [30, "", ["Kỹ thuật kiểm chứng chặng cuối (Output Validation)", "Thực hành 4 kỹ thuật kiểm chứng: truy nguồn, hỏi vặn lại, đối chiếu dữ liệu gốc và chia nhỏ tài liệu dài (chunking), trực tiếp trên kết quả vừa tạo."], [["x", "Live demo"], ["x", "Individual lab"]]],
-   [35, "TT2", ["Phản biện đồng đẳng (Peer review)", "Đánh giá chéo chất lượng output theo checklist chất lượng 5 tiêu chí; trực tiếp tinh chỉnh prompt và chạy lại để hoàn thiện kết quả. [[PL3]]"], [["x", "Peer review"]]],
-   [35, "", ["Đóng gói thư viện prompt & Tổng kết Ngày 1", "Chọn lọc các prompt đạt checklist chất lượng để đưa vào kho tài nguyên dùng chung của phòng Market Research; đúc kết tiến trình học tập Ngày 1; thực hiện exit poll cuối buổi. [[PL2]]"], [["x", "Group exercise"], ["x", "Live poll"]]]
+   [30, "", ["Kỹ thuật kiểm chứng chặng cuối (Output Validation)", "Thực hành 4 kỹ thuật kiểm chứng: truy nguồn, hỏi vặn lại, đối chiếu dữ liệu gốc và chia nhỏ tài liệu dài (chunking), trực tiếp trên kết quả vừa tạo."], [["x", "Trình diễn trực tiếp"], ["x", "Thực hành cá nhân"]]],
+   [35, "TT2", ["Phản biện đồng đẳng (Peer review)", "Đánh giá chéo chất lượng output theo checklist chất lượng 5 tiêu chí; trực tiếp tinh chỉnh prompt và chạy lại để hoàn thiện kết quả. [[PL3]]"], [["x", "Đánh giá đồng đẳng"]]],
+   [35, "", ["Đóng gói thư viện prompt & Tổng kết Ngày 1", "Chọn lọc các prompt đạt checklist chất lượng để đưa vào kho tài nguyên dùng chung của phòng Market Research; đúc kết tiến trình học tập Ngày 1; thực hiện exit poll cuối buổi. [[PL2]]"], [["x", "Thực hành nhóm"], ["x", "Thăm dò nhanh"]]]
   ],
   out:[["Bản hoàn thiện prompt cá nhân", "Prompt phiên bản tối ưu (v2) kèm output phân tích, đối chiếu chuẩn 4/5 tiêu chí trong checklist chất lượng."], ["Biên bản đánh giá chéo", "Phiếu thẩm định và phản biện chuyên môn theo checklist chất lượng giữa các cặp học viên."], ["Kho tri thức số (Thư viện prompt v1.0)", "Bản phát hành đầu tiên của bộ prompt template dùng chung cho toàn phòng Market Research."]]},
  {code:'B3', when:'Ngày 2 · Sáng', short:'Tích hợp nghiệp vụ',
-  title:'Tích hợp nghiệp vụ – Đưa GenAI vào chuỗi quy trình nghiên cứu thị trường', goal:'Mục tiêu 3 · Áp dụng vào công việc hằng ngày',
+  title:'Tích hợp nghiệp vụ', tsub:'Đưa GenAI vào chuỗi quy trình nghiên cứu thị trường', goal:'Mục tiêu 3 · Áp dụng vào công việc hằng ngày',
   abcd:{A:'Mỗi nhóm học viên (ghép chéo Junior & Manager)', B:'Ứng dụng GenAI hoàn thành brief đối thủ kèm nhật ký kiểm chứng nguồn tin', C:'Research sprint mô phỏng yêu cầu gấp 48 giờ', D:'≥ 3/4 điểm ở tiêu chí “Minh bạch nguồn dữ liệu” trong rubric TT4'},
   lo:'Sau Buổi 3, mỗi nhóm học viên {A} dùng GenAI hoàn thiện một brief phân tích đối thủ 1 trang kèm nhật ký kiểm chứng {B} trong research sprint 60 phút mô phỏng yêu cầu 48 giờ {C}, đạt tối thiểu 3/4 điểm ở tiêu chí “Minh bạch nguồn dữ liệu” trong rubric TT4 {D}.',
   subT:'Kỹ năng phối hợp & tác nghiệp', sub:[['Lập bản đồ quy trình (Workflow mapping)','Nhận diện điểm nghẽn và định vị các điểm chạm ứng dụng AI xuyên suốt quy trình nghiên cứu thị trường hàng không.'],['Cơ chế cộng tác Người – Máy (Human-AI teaming)','Phân định ranh giới công việc rõ ràng giữa năng lực sinh nội dung của AI và năng lực phán đoán chiến lược của chuyên viên.'],['Bảo vệ kết luận & Giải trình (Defense & traceability)','Bảo vệ tính chuẩn xác của các luận điểm nghiên cứu và chứng minh nguồn dữ liệu gốc trước chất vấn phản biện.']],
   rows:[
-   [15, "", ["Tình huống kích hoạt (Trigger case study)", "Phản ứng trước động thái mở đường bay mới của đối thủ: Giám đốc thương mại cần báo cáo phân tích chiến lược trong vòng 48 giờ."], [["x", "Airline case study"]]],
-   [40, "NH2", ["Bản đồ hóa quy trình tích hợp AI (Workflow mapping)", "Xây dựng chuỗi giá trị nghiên cứu thị trường của phòng và phân bổ điểm chạm AI theo 3 nấc: Tự động hóa (Automate) – Nâng cấp (Augment) – Giữ cho con người làm (Leave alone). [[PL4]]"], [["x", "Group exercise"]]],
-   [20, "TT3", ["Thẩm định đồng đẳng (Gallery walk & Alignment)", "Tham quan chéo sản phẩm giữa các nhóm, phản biện và thống nhất các điểm chạm công nghệ có độ khả thi cao nhất."], [["x", "Gallery walk"], ["x", "Open discussion"]]],
+   [15, "", ["Tình huống kích hoạt (Trigger case study)", "Phản ứng trước động thái mở đường bay mới của đối thủ: Giám đốc thương mại cần báo cáo phân tích chiến lược trong vòng 48 giờ."], [["x", "Nghiên cứu tình huống hàng không"]]],
+   [40, "NH2", ["Bản đồ hóa quy trình tích hợp AI (Workflow mapping)", "Xây dựng chuỗi giá trị nghiên cứu thị trường của phòng và phân bổ điểm chạm AI theo 3 nấc: Tự động hóa (Automate) – Nâng cấp (Augment) – Giữ cho con người làm (Leave alone). [[PL4]]"], [["x", "Thực hành nhóm"]]],
+   [20, "TT3", ["Thẩm định đồng đẳng (Gallery walk & Alignment)", "Tham quan chéo sản phẩm giữa các nhóm, phản biện và thống nhất các điểm chạm công nghệ có độ khả thi cao nhất."], [["x", "Tham quan chéo sản phẩm"], ["x", "Thảo luận mở"]]],
    [15, "", "Nghỉ giải lao", [["brk", "–"]]],
-   [60, "NH3", ["Research sprint 60 phút (mô phỏng yêu cầu 48 giờ)", "Nhóm phối hợp đa cấp bậc: Manager điều phối; các thành viên phân vai tóm tắt tin, phân tích dữ liệu, soạn brief và kiểm chứng. Nhóm ứng dụng GenAI hoàn thành bản phân tích đối thủ kèm nhật ký kiểm chứng (áp dụng UC01, UC06, UC08, UC10)."], [["x", "Group exercise"], ["x", "Airline case study"]]],
-   [45, "TT4", ["Đóng vai & Thuyết trình cấp cao (Executive role-play)", "Báo cáo tình huống trước “Giám đốc thương mại”; trực tiếp giải trình nguồn dữ liệu gốc và bảo vệ phương pháp kiểm chứng AI (Human-in-the-loop). [[PL5]]"], [["x", "Role-play"]]],
-   [15, "", ["Đúc kết ranh giới trách nhiệm (Debrief)", "Phân định ranh giới rõ ràng giữa phần việc AI thực hiện tốt và thẩm quyền ra quyết định chiến lược thuộc về con người; thực hiện exit poll cuối buổi. [[PL2]]"], [["x", "Open discussion"], ["x", "Live poll"]]]
+   [60, "NH3", ["Research sprint 60 phút (mô phỏng yêu cầu 48 giờ)", "Nhóm phối hợp đa cấp bậc: Manager điều phối; các thành viên phân vai tóm tắt tin, phân tích dữ liệu, soạn brief và kiểm chứng. Nhóm ứng dụng GenAI hoàn thành bản phân tích đối thủ kèm nhật ký kiểm chứng (áp dụng UC01, UC06, UC08, UC10)."], [["x", "Thực hành nhóm"], ["x", "Nghiên cứu tình huống hàng không"]]],
+   [45, "TT4", ["Đóng vai & Thuyết trình cấp cao (Executive role-play)", "Báo cáo tình huống trước “Giám đốc thương mại”; trực tiếp giải trình nguồn dữ liệu gốc và bảo vệ phương pháp kiểm chứng AI (Human-in-the-loop). [[PL5]]"], [["x", "Đóng vai"]]],
+   [15, "", ["Đúc kết ranh giới trách nhiệm (Debrief)", "Phân định ranh giới rõ ràng giữa phần việc AI thực hiện tốt và thẩm quyền ra quyết định chiến lược thuộc về con người; thực hiện exit poll cuối buổi. [[PL2]]"], [["x", "Thảo luận mở"], ["x", "Thăm dò nhanh"]]]
   ],
   out:[["Bản đồ quy trình tích hợp AI", "Bản đồ quy trình của từng nhóm, gắn nhãn 3 mức Automate / Augment / Leave alone, làm đầu vào cho bản đồ chung của phòng."], ["Brief phân tích đối thủ & Nhật ký kiểm chứng", "Brief 1 trang và nhật ký kiểm chứng của từng nhóm, kèm điểm rubric TT4."], ["Bộ câu hỏi phản biện quản trị (Executive inquiry checklist)", "Danh mục các câu hỏi thẩm định then chốt mà lãnh đạo thường dùng để chất vấn báo cáo có ứng dụng AI."]]},
  {code:'B4', when:'Ngày 2 · Chiều', short:'Use case cá nhân',
-  title:'Use case cá nhân – Chạy thử & Lộ trình hành động 30–60–90 ngày', goal:'Mục tiêu 4 · Có 1–2 use case triển khai ngay',
+  title:'Use case cá nhân', tsub:'Chạy thử & Lộ trình hành động 30–60–90 ngày', goal:'Mục tiêu 4 · Có 1–2 use case triển khai ngay',
   abcd:{A:'Mỗi học viên', B:'Thiết kế, chạy thử (pilot run) và đóng gói 1–2 use case AI', C:'Nhiệm vụ chuyên môn thật của học viên, dữ liệu đã ẩn danh', D:'Use Case Canvas đủ 5 cấu phần, được nhóm đánh giá “có thể triển khai ngay” (TT5)'},
   lo:'Sau Buổi 4, mỗi học viên {A} thiết kế và chạy thử 1–2 use case AI {B} trên nhiệm vụ chuyên môn thật, dùng dữ liệu công việc đã ẩn danh {C}, với Use Case Canvas đủ 5 cấu phần và được nhóm phản biện đánh giá “có thể triển khai ngay” {D}.',
   subT:'Kỹ năng triển khai & thực thi', sub:[['Ưu tiên','Chọn use case bằng ma trận Giá trị × Khả thi.'],['Đo lường','Xác định KPI và rủi ro cho use case của mình.'],['Cam kết','Lập kế hoạch 30–60–90 ngày, được Manager xác nhận.']],
   rows:[
-   [20, "", ["Định hình danh mục 14 use case nghiên cứu thị trường", "Phân loại theo 3 cấp độ: Tự động hóa (Automation) – Nâng cấp (Augmentation) – Chuyển đổi (Transformation)."], [["x", "Presentation"]]],
-   [30, "CN2", ["Sàng lọc & Định vị sáng kiến (Prioritization matrix)", "Định vị use case trên ma trận Giá trị × Khả thi (Value × Feasibility). Junior và Specialist chọn từ UC01–UC10; Manager có thể chọn thêm 1 use case chiến lược UC11–UC14."], [["x", "Individual lab"]]],
-   [50, "CN2", ["Thiết lập Use Case Canvas & Chạy thử (Pilot run)", "Hoàn thiện 5 cấu phần: Bài toán nghiệp vụ – Giải pháp AI – Giá trị mang lại – Chỉ số KPI – Kiểm soát rủi ro; chạy thử trực tiếp trên dữ liệu thật đã ẩn danh, có coaching 1-1 từ Coach. [[PL6]]"], [["x", "Individual lab"], ["x", "1-on-1 coaching"]]],
+   [20, "", ["Định hình danh mục 14 use case nghiên cứu thị trường", "Phân loại theo 3 cấp độ: Tự động hóa (Automation) – Nâng cấp (Augmentation) – Chuyển đổi (Transformation)."], [["x", "Thuyết trình"]]],
+   [30, "CN2", ["Sàng lọc & Định vị sáng kiến (Prioritization matrix)", "Định vị use case trên ma trận Giá trị × Khả thi (Value × Feasibility). Junior và Specialist chọn từ UC01–UC10; Manager có thể chọn thêm 1 use case chiến lược UC11–UC14."], [["x", "Thực hành cá nhân"]]],
+   [50, "CN2", ["Thiết lập Use Case Canvas & Chạy thử (Pilot run)", "Hoàn thiện 5 cấu phần: Bài toán nghiệp vụ – Giải pháp AI – Giá trị mang lại – Chỉ số KPI – Kiểm soát rủi ro; chạy thử trực tiếp trên dữ liệu thật đã ẩn danh, có coaching 1-1 từ Coach. [[PL6]]"], [["x", "Thực hành cá nhân"], ["x", "Kèm cặp 1-1"]]],
    [15, "", "Nghỉ giải lao", [["brk", "–"]]],
-   [45, "TT5", ["Bảo vệ ý tưởng sáng kiến (Pitch 3 phút)", "Trình bày use case trong nhóm chuyên môn, tiếp nhận phản biện chéo và bình chọn các sáng kiến tiêu biểu để ưu tiên nhân rộng cho toàn bộ phận."], [["x", "Use case pitch"], ["x", "Peer review"]]],
-   [30, "", ["Xây dựng lộ trình thực thi 30–60–90 ngày (Post-training roadmap)", "Lập kế hoạch hành động chi tiết sau đào tạo, xác lập KPI duy trì và thống nhất cam kết với Manager."], [["x", "Kế hoạch 30–60–90 ngày"], ["x", "Open discussion"]]],
-   [20, "", ["Đánh giá năng lực cuối khóa & Bế mạc", "Thực hiện bài kiểm tra tình huống (Scenario assessment) và khảo sát mức tự tin khi dùng AI, cùng thang với khảo sát đầu khóa. [[PL7]]"], [["x", "Micro-quiz"], ["x", "Reflection"]]]
+   [45, "TT5", ["Bảo vệ ý tưởng sáng kiến (Pitch 3 phút)", "Trình bày use case trong nhóm chuyên môn, tiếp nhận phản biện chéo và bình chọn các sáng kiến tiêu biểu để ưu tiên nhân rộng cho toàn bộ phận."], [["x", "Trình bày use case"], ["x", "Đánh giá đồng đẳng"]]],
+   [30, "", ["Xây dựng lộ trình thực thi 30–60–90 ngày (Post-training roadmap)", "Lập kế hoạch hành động chi tiết sau đào tạo, xác lập KPI duy trì và thống nhất cam kết với Manager."], [["x", "Kế hoạch 30–60–90 ngày"], ["x", "Thảo luận mở"]]],
+   [20, "", ["Đánh giá năng lực cuối khóa & Bế mạc", "Thực hiện bài kiểm tra tình huống (Scenario assessment) và khảo sát mức tự tin khi dùng AI, cùng thang với khảo sát đầu khóa. [[PL7]]"], [["x", "Trắc nghiệm nhanh"], ["x", "Đúc kết cá nhân"]]]
   ],
   out:[["Bộ Use Case Canvas hoàn chỉnh", "1–2 hồ sơ giải pháp đã chạy thử trên dữ liệu công việc thật, kèm bằng chứng thực thi (prompt chuẩn, output mẫu, nhật ký kiểm chứng)."], ["Lộ trình hành động 30–60–90 ngày", "Bản cam kết ứng dụng cá nhân hóa với các mốc bàn giao cụ thể, có xác nhận đồng hành của Manager."], ["Danh mục sáng kiến tiên phong (Pilot backlog)", "Danh sách use case được phòng bình chọn để nhân rộng và đề án thử nghiệm cấp độ Transformation của Manager (nếu có)."], ["Dữ liệu đánh giá cuối khóa", "Kết quả bài kiểm tra tình huống và khảo sát mức tự tin khi dùng AI của học viên."]]}
 ];
@@ -1527,12 +1531,13 @@ function renderSess(i){
   panel.setAttribute('aria-labelledby','st-'+i);
   panel.innerHTML = `
     <div class="ss">
-      <div class="ss-h"><span>1</span>Tên buổi học<em>Session title</em></div>
+      <div class="ss-h"><span>1</span>Tên buổi học</div>
       <h3 class="ss-title">Buổi ${s.code.slice(1)}. ${esc(s.title)}</h3>
-      <p class="muted" style="margin-top:4px; font-size:14px">${SLBL(s).split(' · ')[1]} · Phục vụ ${esc(s.goal)}</p>
+      <p class="ss-sub">${esc(s.tsub).replace(/30–60–90 ngày/g,'<span style="white-space:nowrap">30–60–90 ngày</span>')}</p>
+      <p class="muted" style="margin-top:6px; font-size:14px">${SLBL(s).split(' · ')[1]} · Phục vụ ${esc(s.goal)}</p>
     </div>
     <div class="ss">
-      <div class="ss-h"><span>2</span>Mục tiêu học tập<em>Learning objectives</em></div>
+      <div class="ss-h"><span>2</span>Mục tiêu học tập</div>
       <div class="lo-grid">
         <div class="panel lo-main">
           <div class="fld">Mục tiêu hành động · ABCD</div>
@@ -1553,19 +1558,19 @@ function renderSess(i){
       </div>
     </div>
     <div class="ss">
-      <div class="ss-h"><span>3</span>Thời lượng<em>Duration</em><b class="ss-r">${total} phút</b></div>
+      <div class="ss-h"><span>3</span>Thời lượng<b class="ss-r">${total} phút</b></div>
       <div class="bar" role="img" aria-label="Phân bổ ${total} phút theo nhóm phương pháp đào tạo">${bar}</div>
       <div class="axis"><span>0'</span><span>${total}'</span></div>
       <div class="legend">${Object.keys(CAT).map(k=>`<span><i class="${k}" style="background:${k==='brk'?'repeating-linear-gradient(135deg,var(--c-brk) 0 3px,transparent 3px 5px)':'var(--c-'+k+')'}; ${k==='brk'?'border:1px solid var(--line)':''}"></i>${CAT[k]}</span>`).join('')}</div>
     </div>
     <div class="ss">
-      <div class="ss-h"><span>4</span>Nội dung &amp; Phương pháp đào tạo<em>Agenda · Training methods</em></div>
+      <div class="ss-h"><span>4</span>Nội dung &amp; Phương pháp đào tạo</div>
       <p class="code-note">Hoạt động = Workshop activities (Phần 3): <span><b>TT</b> Tương tác</span> · <span><b>CN</b> Thực hành cá nhân</span> · <span><b>NH</b> Thực hành nhóm</span>.</p>
       <div class="tbl-wrap"><table class="agenda">
         <thead><tr><th style="width:104px; text-align:center; white-space:nowrap">Thời lượng</th><th style="width:96px; text-align:center; white-space:nowrap">Hoạt động</th><th>Nội dung</th><th style="width:28%">Phương pháp đào tạo</th></tr></thead>
         <tbody>${rows}<tr class="tot"><td class="c mono" style="font-weight:700">${total}'</td><td class="code"></td><td class="txt" style="font-weight:700">Tổng thời lượng</td><td class="meth"></td></tr></tbody>
       </table></div>
-      <div class="out"><div class="out-h">Đầu ra bàn giao sau Buổi ${s.code.slice(1)} <em>Session deliverables</em></div><ul>${s.out.map(o=>`<li><b>${esc(o[0])}:</b> ${esc(o[1])}</li>`).join('')}</ul></div>
+      <div class="out"><div class="out-h">Đầu ra bàn giao sau Buổi ${s.code.slice(1)}</div><ul>${s.out.map(o=>`<li><b>${esc(o[0])}:</b> ${esc(o[1])}</li>`).join('')}</ul></div>
     </div>`;
 }
 tabs.addEventListener('click', e=>{
@@ -1668,11 +1673,11 @@ renderUC();
 
 /* ---- Phụ lục ---- */
 const PLS=[
- ['PL1','Khảo sát đầu vào','Pre-training survey','10 câu: mức dùng AI, việc lặp tốn thời gian, mức tự tin, 2 câu tình huống.','Trước khóa học · CN2 · Phần 5'],
- ['PL2','Poll và exit poll','Live poll · Exit poll','Poll TT1 hai lần, phiếu tự kiểm tra 3 điểm, exit poll 2 câu cuối Buổi 1–3.','Buổi 1 · TT1 · Cuối Buổi 1–3'],
- ['PL3','Khung prompt và checklist chất lượng','Prompt framework · Quality checklist','Khung 6 thành phần, prompt mẫu ngành hàng không, checklist chất lượng 5 tiêu chí.','Buổi 2 · CN1 · TT2'],
- ['PL4','Bản đồ quy trình tích hợp AI','AI-integrated workflow map','Ví dụ 6 bước nghiên cứu thị trường, gắn nấc Automate / Augment / Leave alone và use case.','Buổi 3 · NH2 · TT3'],
- ['PL5','Rubric role-play TT4','Role-play rubric','4 tiêu chí, thang 1–4; ngưỡng 3/4 ở tiêu chí Minh bạch nguồn dữ liệu.','Buổi 3 · TT4'],
+ ['PL1','Khảo sát đầu vào','','10 câu: mức dùng AI, việc lặp tốn thời gian, mức tự tin, 2 câu tình huống.','Trước khóa học · CN2 · Phần 5'],
+ ['PL2','Poll và exit poll','','Poll TT1 hai lần, phiếu tự kiểm tra 3 điểm, exit poll 2 câu cuối Buổi 1–3.','Buổi 1 · TT1 · Cuối Buổi 1–3'],
+ ['PL3','Khung prompt và checklist chất lượng','','Khung 6 thành phần, prompt mẫu ngành hàng không, checklist chất lượng 5 tiêu chí.','Buổi 2 · CN1 · TT2'],
+ ['PL4','Bản đồ quy trình tích hợp AI','','Ví dụ 6 bước nghiên cứu thị trường, gắn nấc Automate / Augment / Leave alone và use case.','Buổi 3 · NH2 · TT3'],
+ ['PL5','Rubric role-play TT4','','4 tiêu chí, thang 1–4; ngưỡng 3/4 ở tiêu chí Minh bạch nguồn dữ liệu.','Buổi 3 · TT4'],
  ['PL6','Use Case Canvas','','5 cấu phần kèm câu hỏi gợi ý và một ví dụ đã điền.','Buổi 4 · CN2 · TT5'],
  ['PL7','Bài đánh giá cuối khóa','Scenario assessment','3 câu mẫu trích từ bộ 6–8 câu tình huống, kèm đáp án.','Cuối Buổi 4 · Phần 5']
 ];
@@ -1700,7 +1705,17 @@ function showM(which){
     document.getElementById('m-'+w).hidden = w!==which;
   });
 }
-mt.addEventListener('click', e=>{const b=e.target.closest('button'); if(b) showM(b.id.replace('tab-',''));});
+mt.addEventListener('click', e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  const w=b.id.replace('tab-',''); showM(w);
+  const top=mt.getBoundingClientRect().top, stickTop=parseFloat(getComputedStyle(mt).top)||0;
+  if(top<=stickTop+1){ const p=document.getElementById('m-'+w); window.scrollTo({top: window.scrollY + p.getBoundingClientRect().top - stickTop - mt.offsetHeight + 12, behavior:'smooth'}); }
+});
+mt.addEventListener('keydown', e=>{
+  if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
+  const bs=[...mt.querySelectorAll('button')]; const cur=bs.findIndex(x=>x.getAttribute('aria-selected')==='true');
+  const n=(cur+1)%bs.length; bs[n].focus(); bs[n].click();
+});
 document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=>showM(a.dataset.go)));
 
 /* ---- Nav highlight ---- */
